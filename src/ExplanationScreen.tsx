@@ -234,7 +234,7 @@ class ExplanationScreen extends React.Component<Props> {
               justifyContent: "space-between",
             }}
           >
-            <Header allowFontScaling={true}>Les distortions Cognitives</Header>
+            <Header allowFontScaling={true}>Aide</Header>
             <View
               style={{
                 display: "flex",

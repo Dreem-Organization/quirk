@@ -10,6 +10,7 @@ import { sliderWidth, itemWidth } from "../form/sizes";
 import { View, Image } from "react-native";
 import { Header, Container, Paragraph, ActionButton } from "../ui";
 import { Constants, Haptic } from "expo";
+import i18n from "../i18n";
 import theme from "../theme";
 import haptic from "../haptic";
 import * as stats from "../stats";
@@ -30,11 +31,11 @@ const RecordStep = () => (
     <Image
       source={require("../../assets/looker/Looker.png")}
       style={{
-        width: 156,
-        height: 156,
+        width: 300,
+        height: 300,
         resizeMode: "contain",
         alignSelf: "center",
-        marginBottom: 48,
+        marginBottom: 20,
       }}
     />
     <Header
@@ -42,15 +43,14 @@ const RecordStep = () => (
         fontSize: 28,
       }}
     >
-      Record negative thoughts when they happen.
+      {i18n.t("onboarding_title_1")}
     </Header>
     <Paragraph
       style={{
         fontSize: 20,
       }}
     >
-      If you use it in the moment, Quirk retrains your moods to be less affected
-      by your thoughts.
+      {i18n.t("onboarding_body_1")}
     </Paragraph>
   </View>
 );
@@ -78,14 +78,14 @@ const ChallengeStep = () => (
         fontSize: 28,
       }}
     >
-      Challenge your internal monologue.
+      {i18n.t("onboarding_title_2")}
     </Header>
     <Paragraph
       style={{
         fontSize: 20,
       }}
     >
-      Thoughts that cause emotional stress are nearly always distorted.
+      {i18n.t("onboarding_body_2")}
     </Paragraph>
   </View>
 );
@@ -113,15 +113,14 @@ const ChangeStep = () => (
         fontSize: 28,
       }}
     >
-      Change your thoughts over time.
+      {i18n.t("onboarding_title_3")}
     </Header>
     <Paragraph
       style={{
         fontSize: 20,
       }}
     >
-      Through practice, you’ll actively change your thoughts and feel a lot
-      better.
+      {i18n.t("onboarding_body_3")}
     </Paragraph>
   </View>
 );
@@ -149,7 +148,7 @@ const DockStep = ({ onContinue }) => (
         fontSize: 28,
       }}
     >
-      Put Quirk where you’ll find it again.
+      {i18n.t("onboarding_title_4")}
     </Header>
 
     <Paragraph
@@ -158,8 +157,7 @@ const DockStep = ({ onContinue }) => (
         marginBottom: 18,
       }}
     >
-      Quirk is a habit you build up. If you do it right, it can get you out of a
-      bad place.
+      {i18n.t("onboarding_body_4")}
     </Paragraph>
 
     <Paragraph
@@ -168,8 +166,7 @@ const DockStep = ({ onContinue }) => (
         marginBottom: 48,
       }}
     >
-      To help yourself remember, try putting Quirk on the front page or the dock
-      of your phone.
+      {i18n.t("onboarding_body_5")}
     </Paragraph>
 
     <ActionButton title="Continue" width="100%" onPress={onContinue} />

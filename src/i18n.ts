@@ -21,20 +21,6 @@ i18n.fallbacks = true;
 i18n.translations = {
   fr,
   en,
-  it,
-  ko,
-  pl,
-  es,
-  de,
-  fi,
-  nl,
-  ru,
-  "zh-Hans": zhHans,
-  "pt-PT": ptPT,
-  "pt-BR": ptBR,
-  nb,
-  sv,
-  ro,
 };
 i18n.locale = Localization.locale;
 

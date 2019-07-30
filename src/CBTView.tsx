@@ -64,7 +64,6 @@ export default ({ thought }: ThoughtComponent) => (
           style={{
             marginTop: 0,
           }}
-          color="pink"
         >
           {thought.alternativeThought}
         </BubbleThought>

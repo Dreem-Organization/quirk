@@ -1,4 +1,4 @@
-import { Container, Row, Header, IconButton } from "../ui";
+import { ActionButton, Container, Row, Header, IconButton } from "../ui";
 import React from "react";
 import { View, StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
@@ -32,6 +32,8 @@ interface FormScreenState {
   shouldShowInFlowOnboarding: boolean;
   isReady: boolean;
 }
+
+export type Slides = "automatic" | "distortions" | "challenge" | "alternative";
 
 export default class extends React.Component<ScreenProps, FormScreenState> {
   static navigationOptions = {
@@ -177,6 +179,19 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     });
   };
 
+  slideToIndex = (slide: Slides): number => {
+    switch (slide) {
+      case "automatic":
+        return 0;
+      case "distortions":
+        return 1;
+      case "challenge":
+        return 2;
+      case "alternative":
+        return 3;
+    }
+  };
+
   render() {
     const {
       shouldShowHelpBadge,
@@ -217,25 +232,14 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               paddingRight: 24,
             }}
           >
-            <IconButton
-              featherIconName={"help-circle"}
-              accessibilityLabel={i18n.t("accessibility.help_button")}
-              onPress={() => {
-                flagstore.setFalse("start-help-badge").then(() => {
-                  this.setState({ shouldShowHelpBadge: false });
-                  this.props.navigation.push(EXPLANATION_SCREEN);
-                });
-              }}
-              hasBadge={shouldShowHelpBadge}
-            />
-            <Header allowFontScaling={false} style={{fontSize: 25}}>dreem</Header>
+
+            <Header allowFontScaling={false} style={{fontSize: 30}}>Journal</Header>
             <IconButton
               accessibilityLabel={i18n.t("accessibility.list_button")}
               featherIconName={"list"}
               onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
             />
           </Row>
-          <Header allowFontScaling={true} style={{fontSize: 22}}>À quoi pensez  vous ? </Header>
           <FormView
             onSave={this.onSave}
             thought={this.state.thought}
@@ -245,6 +249,8 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             onChangeAutomaticThought={this.onChangeAutomaticThought}
             onChangeChallenge={this.onChangeChallenge}
             onChangeDistortion={this.onChangeDistortion}
+            navigation={this.props.navigation}
+            slideToIndex={this.slideToIndex}
           />
         </Container>
       </View>

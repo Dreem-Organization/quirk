@@ -139,6 +139,7 @@
     "delete_thought_button": "delete thought",
     "close_button": "close"
   },
+  "save_finish": "Save & Finish",
   "payment": {
     "ios_explanation": "Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
   },
@@ -153,5 +154,22 @@
   "should_statements_one_liner": "ex: \"I should have been better\"",
   "labeling_one_liner": "ex: \"He's a jerk\"",
   "self_blaming_one_liner": "Taking all the blame on yourself",
-  "other_blaming_one_liner": "Assigning all the blame to someone else"
+  "other_blaming_one_liner": "Assigning all the blame to someone else",
+  "onboarding_title_1": "Record negative thoughts when they happen.",
+  "onboarding_body_1": "If you use it in the moment, Quirk retrains your moods to be less affected by your thoughts.",
+  "onboarding_title_2": "Challenge your internal monologue.",
+  "onboarding_body_2": "Thoughts that cause emotional stress are nearly always distorted.",
+  "onboarding_title_3": "Change your thoughts over time.",
+  "onboarding_body_3": "Through practice, you’ll actively change your thoughts and feel a lot better.",
+  "onboarding_title_4":"Put Quirk where you’ll find it again.",
+  "onboarding_body_4":"Quirk is a habit you build up. If you do it right, it can get you out of a bad place.",
+  "onboarding_body_5":"To help yourself remember, try putting Quirk on the front page or the dock of your phone.",
+  "save_finish": "Sauvegarder",
+  "got_feedback": "Got Feedback?",
+  "email_us": "Email Us!",
+  "main_screen": {
+    "automatic_thought_subtitle":"This is generally an automatic thought.",
+    "is_it_distorted": "Is this thought distorted?",
+    "is_it_serious": "Is it as serious as you think? Are you sure it's true?"
+  }
 }

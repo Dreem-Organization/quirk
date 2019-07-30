@@ -149,39 +149,6 @@ export default ({
       </Row> */}
 
       <CBTView thought={thought} onEdit={onEdit} />
-
-      <View
-        style={{
-          marginTop: 18,
-          borderRadius: 8,
-          paddingBottom: 96,
-        }}
-      >
-        <SubHeader
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          Got Feedback?
-        </SubHeader>
-        <Row
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          <ActionButton
-            fillColor={theme.lightGray}
-            textColor={theme.pink}
-            title={"Email Us!"}
-            width={"100%"}
-            onPress={() => {
-              Linking.openURL("mailto:support@dreem.com");
-            }}
-          />
-        </Row>
-      </View>
     </ScrollView>
   );
 };

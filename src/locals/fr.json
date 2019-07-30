@@ -61,24 +61,24 @@
     },
     "challenge_screen": {
       "line1": "Pourquoi cette idée n'est-elle pas réaliste ?",
-      "emphasis1": "Mets-la au défi."
+      "emphasis1": "Mettez-la au défi."
     },
     "write_challenge": {
-      "line1": "Tu peux par exemple écrire :"
+      "line1": "Vous pouvez par exemple écrire :"
     },
     "alt_thought": {
       "line1": "Enfin, nous allons écrire une",
       "emphasis1": "pensée alternative."
     },
     "show_off": {
-      "line1": "Retrouve-la plus tard :"
+      "line1": "Retrouvez-la plus tard :"
     },
     "got_it": {
       "line1": "Et c'est à peu près tout.",
       "btn_title": "Allons-y !"
     }
   },
-  "auto_thought": "Pensée Automatique",
+  "auto_thought": "Pensée automatique",
   "cog_distortion": "Distorsion cognitive",
   "challenge": "Défi",
   "alt_thought": "Pensée alternative",
@@ -89,8 +89,8 @@
     "auto_thought_placeholder": "Que se passe-t-il ?",
     "cog_distortion": "Distorsion cognitive",
     "challenged": "Défi",
-    "changed_placeholder": "Débats cette pensée !",
-    "alt_thought_placeholder": "Que devrais-tu penser à la place ?"
+    "changed_placeholder": "Débatez cette pensée !",
+    "alt_thought_placeholder": "Que devriez-vous penser à la place ?"
   },
   "all_or_nothing_thinking": "Penser en noir ou blanc",
   "all_or_nothing_thinking_explanation": "Cette distorsion se produit lorsque tu ne trouves pas de place pour un juste milieu. Si un petit défaut personnel te fais penser que tu es fondamentalement mauvais, c'est que tu es en train de voir les choses en blanc ou noir.",
@@ -113,7 +113,7 @@
   "magnification_of_the_negative_thought": "J'ai mangé sainement cette semaine, mais j'ai sauté ma course à pied.",
   "mind_reading": "Lire dans les pensées",
   "mind_reading_explanation": "Si nous nous inquiétons de ce que quelqu'un d'autre pense de nous, nous essayons de lire dans les pensées. À moins que quelqu'un ne te dise ce qu'il pense, tu n'as absolument aucun moyen de le savoir. Alors pourquoi supposer le pire ?",
-  "mind_reading_thought": "J'ai été impoli.e avec Georges, je parie qu'il me déteste.",
+  "mind_reading_thought": "J'ai été impoli(e) avec Georges, je parie qu'il me déteste.",
   "minimization_of_the_positive": "Minimisation du positif",
   "minimization_of_the_positive_explanation": "Si tu minimises les bonnes choses qui t'arrivent, tu minimises les aspects positifs. Même si ta journée ne s'est pas déroulée à 100 % comme prévu, cela ne veut pas dire que les 60 % qui se sont bien déroulés doivent être ignorés.",
   "minimization_of_the_positive_thought": "Beaucoup de gens ont aimé ma présentation, mais j'ai trébuché en donnant l'introduction, donc c'était raté.",
@@ -137,5 +137,35 @@
     "new_thought_button": "nouvelle pensée",
     "settings_button": "réglages",
     "delete_thought_button": "effacer la pensée"
-  }
+  },
+  "save_finish": "Sauvegarder",
+  "onboarding_title_1": "Notez les pensées négatives quand elles surviennent.",
+  "onboarding_body_1": "If you use it in the moment, Quirk retrains your moods to be less affected by your thoughts.",
+  "onboarding_title_2": "Challenge your internal monologue.",
+  "onboarding_body_2": "Thoughts that cause emotional stress are nearly always distorted.",
+  "onboarding_title_3": "Change your thoughts over time.",
+  "onboarding_body_3": "Through practice, you’ll actively change your thoughts and feel a lot better.",
+  "onboarding_title_4":"Put Quirk where you’ll find it again.",
+  "onboarding_body_4":"Quirk is a habit you build up. If you do it right, it can get you out of a bad place.",
+  "onboarding_body_5":"To help yourself remember, try putting Quirk on the front page or the dock of your phone.",
+  "got_feedback": "Vous avez une question ?",
+  "email_us": "Contactez-nous !",
+  "main_screen": {
+    "automatic_thought_subtitle":"Décrivez votre pensée automatique.",
+    "is_it_distorted": "D'après vous, à quelles distorsions cette pensée est-elle sujette ?",
+    "is_it_serious": "Est-ce aussi grave que vous le pensez ? Êtes-vous sûr que c'est vrai ?",
+    "alternative_thought": "Ré-évaluez cette pensée, de façon objective."
+  },
+  "all_or_nothing_thinking_one_liner": "\"J'ai raté l'interview, je dois être inemployable.\"",
+  "overgeneralization_one_liner": "\"Personne ne m'a invité(e) à danser, donc personne ne dansera jamais avec moi.\"",
+  "mind_reading_one_liner": "\"J'ai été impoli(e) avec Georges, je parie qu'il me déteste.\"",
+  "fortune_telling_one_liner": "\"L'avion que je m'apprête à prendre va s'écraser.\"",
+  "magnification_of_the_negative_one_liner": "\"J'ai mangé sainement cette semaine, mais j'ai sauté ma course à pied.\"",
+  "minimization_of_the_positive_one_liner": "\"Beaucoup de gens ont aimé ma présentation, mais j'ai trébuché en donnant l'introduction, donc c'était raté.\"",
+  "catastrophizing_one_liner": "\"Je me sens nerveux, j'ai peut-être une crise cardiaque.\"",
+  "emotional_reasoning_one_liner": "\"Je me sens coupable, donc j'ai dû faire quelque chose de mal.\"",
+  "should_statements_one_liner": "\"Je suis adulte, je ne devrais pas avoir ces problèmes mentaux.\"",
+  "labeling_one_liner": "\"J'ai raté un test, donc je suis un mauvais élève.\"",
+  "self_blaming_one_liner": "\"Mon fils échoue à l'école, j'ai dû le laisser tomber.\"",
+  "other_blaming_one_liner": "\"Ce crétin met trop de temps à faire la queue et je vais être en retard !\"",
 }

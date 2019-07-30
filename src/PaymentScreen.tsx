@@ -51,12 +51,10 @@ import {
 } from "./subscriptions";
 import theme from "./theme";
 import i18n from "./i18n";
-import { storeExpirationDate } from "./subscriptions/subscriptionstore";
 import dayjs from "dayjs";
 import { SplashScreen } from "expo";
 import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
-import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
 
@@ -191,12 +189,10 @@ class PaymentScreen extends React.Component<
     );
 
     try {
-      if (await isGrandfatheredIntoFreeSubscription()) {
-        stats.subscriptionVerified("grandfathered");
-        this.redirectToFormScreen();
-        SplashScreen.hide();
-        return;
-      }
+      // todo cleanup
+      stats.subscriptionVerified("grandfathered");
+      this.redirectToFormScreen();
+      SplashScreen.hide();
 
       // New apps don't need to spend time checking payments,
       // let's just get to it asap

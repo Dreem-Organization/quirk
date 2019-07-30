@@ -10,10 +10,17 @@ import { View, ScrollView, Linking } from "react-native";
 import i18n from "../i18n";
 import { CognitiveDistortion } from "../distortions";
 import theme from "../theme";
+import {
+  CBT_LIST_SCREEN,
+  EXPLANATION_SCREEN,
+  CBT_ON_BOARDING_SCREEN,
+  CBT_VIEW_SCREEN,
+} from "../screens";
 
 export default ({
   distortions = [],
   onChange,
+  navigation
 }: {
   distortions: CognitiveDistortion[];
   onChange: (slug: string) => void;
@@ -38,9 +45,9 @@ export default ({
               marginBottom: 18,
             }}
           >
-            Is this thought distorted?
+            {i18n.t("main_screen.is_it_distorted")}
           </Paragraph>
-          <RoundedSelector items={distortions} onPress={onChange} />
+          <RoundedSelector items={distortions} onPress={onChange}/>
 
           <Row
             style={{
@@ -49,14 +56,12 @@ export default ({
           >
             <ActionButton
               flex={1}
-              title={"Learn More"}
+              title={"En savoir plus"}
               fillColor="#EDF0FC"
               textColor={theme.darkBlue}
               width={"100%"}
               onPress={() => {
-                Linking.canOpenURL("https://quirk.fyi/distortions").then(() =>
-                  Linking.openURL("https://quirk.fyi/distortions")
-                );
+                  navigation.push(EXPLANATION_SCREEN);
               }}
             />
           </Row>

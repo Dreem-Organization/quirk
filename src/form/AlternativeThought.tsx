@@ -29,7 +29,7 @@ export default ({
           marginBottom: 12,
         }}
       >
-        This isn't a challenge, it's a way to cement an alternative thought.
+        {i18n.t("main_screen.alternative_thought")}
       </Paragraph>
       <TextInput
         style={textInputStyle}

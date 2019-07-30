@@ -29,7 +29,7 @@ export default ({
           marginBottom: 18,
         }}
       >
-        This is generally an "automatic thought."
+        {i18n.t("main_screen.automatic_thought_subtitle")}
       </Paragraph>
       <TextInput
         style={textInputStyle}

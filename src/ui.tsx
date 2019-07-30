@@ -64,6 +64,7 @@ export const Header = ({
       fontWeight: "900",
       fontSize: 48,
       color: theme.darkText,
+      marginTop: 5,
       marginBottom: 12,
       ...style,
     }}
@@ -104,14 +105,13 @@ export const SelectorTextItem = ({
     onPress={onPress}
     style={{
       backgroundColor: selected ? theme.pink : "white",
-      borderColor: selected ? theme.darkBlue : theme.lightGray,
-      borderBottomWidth: 2,
+      borderColor: selected ? theme.pink : theme.lightGray,
       paddingTop: 8,
       paddingBottom: 4,
-      borderRadius: 8,
+      borderRadius: 12,
       borderWidth: 1,
-      marginBottom: 4,
-      marginTop: 1,
+      marginBottom: 8,
+      marginTop: 6,
     }}
   >
     <View style={{ flexDirection: "column" }}>
@@ -156,7 +156,7 @@ export const SelectorTextItem = ({
           paddingRight: 12,
           paddingBottom: 6,
           paddingTop: 6,
-          borderRadius: 8,
+          borderRadius: 12,
         }}
       >
         <Paragraph
@@ -238,7 +238,7 @@ export const RoundedSelectorButton = ({
       paddingTop: 8,
       paddingBottom: 8,
       paddingRight: 12,
-      borderRadius: 8,
+      borderRadius: 28,
       borderWidth: 1,
       marginBottom: 4,
       marginTop: 1,
@@ -275,7 +275,7 @@ export const FloatingCard = ({
       backgroundColor: "white",
       borderWidth: 2,
       borderColor: theme.pink,
-      borderRadius: 8,
+      borderRadius: 12,
       padding: 24,
       elevation: 1,
       shadowColor: theme.lightGray,
@@ -283,6 +283,7 @@ export const FloatingCard = ({
       shadowRadius: 10,
       shadowOpacity: 0.8,
       width: "100%",
+
       ...style,
     }}
   >
@@ -445,7 +446,7 @@ export const IconButton = ({
       width: 48,
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: 10,
+      borderRadius: 70,
       alignSelf: "center",
       position: "relative",
       ...style,
@@ -466,7 +467,7 @@ export const IconButton = ({
         }}
       />
     )}
-    <Feather name={featherIconName} size={24} color={theme.veryLightText} />
+    <Feather name={featherIconName} size={24} color={theme.darkText} />
   </TouchableOpacity>
 );
 

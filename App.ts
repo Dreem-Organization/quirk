@@ -15,11 +15,9 @@ import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
-import PaymentScreen from "./src/PaymentScreen";
 
 const App = createStackNavigator(
   {
-    [PAYMENT_SCREEN]: PaymentScreen,
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
     [CBT_LIST_SCREEN]: CBTListScreen,
     [CBT_FORM_SCREEN]: CBTFormScreen,

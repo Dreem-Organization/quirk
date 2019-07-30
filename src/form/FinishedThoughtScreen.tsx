@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Header, IconButton } from "../ui";
+import { ActionButton, Container, Row, Header, IconButton } from "../ui";
 import { View, StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
@@ -64,7 +64,7 @@ export default class extends React.Component<ScreenProps, ScreenState> {
               paddingRight: 24,
             }}
           >
-            <Header allowFontScaling={false}>quirk</Header>
+            <Header allowFontScaling={false} style={{fontSize: 28}}>Pensée</Header>
             <IconButton
               accessibilityLabel={i18n.t("accessibility.close_button")}
               featherIconName={"x"}

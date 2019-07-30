@@ -48,7 +48,7 @@ const ThoughtItem = ({
         backgroundColor: "white",
         borderColor: theme.lightGray,
         borderBottomWidth: 2,
-        borderRadius: 8,
+        borderRadius: 12,
         borderWidth: 1,
         marginRight: 18,
         flex: 1,
@@ -79,7 +79,7 @@ const ThoughtItem = ({
           paddingBottom: 12,
           paddingTop: 6,
           margin: 4,
-          borderRadius: 8,
+          borderRadius: 12,
         }}
       >
         <Paragraph>
@@ -286,7 +286,7 @@ class CBTListScreen extends React.Component<Props, State> {
           <Container>
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
-              <Header allowFontScaling={false}>.quirk</Header>
+              <Header allowFontScaling={false} style={{fontSize: 30}}>Mes pensées</Header>
 
               <View style={{ flexDirection: "row" }}>
                 <IconButton

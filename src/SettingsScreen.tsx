@@ -28,7 +28,6 @@ import {
 } from "./setting";
 import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
-import { getSubscriptionExpirationDate } from "./subscriptions/subscriptionstore";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 
 export { HistoryButtonLabelSetting };
@@ -73,77 +72,6 @@ const GrandfatheredInFreeQuirk = () => (
   </>
 );
 
-const SubscriptionExpirationDate = ({ expirationDate }) => (
-  <>
-    <Row>
-      <Paragraph
-        style={{
-          marginBottom: 9,
-        }}
-      >
-        Thanks for supporting the development of Quirk!
-      </Paragraph>
-    </Row>
-    <Row>
-      <Paragraph
-        style={{
-          marginBottom: 9,
-        }}
-      >
-        You're currently subscribed to the <B>Quirk Monthly Subscription.</B> On{" "}
-        <B>{expirationDate}</B> your subscription will renew and your account
-        will be charged <B>$3.99.</B>
-      </Paragraph>
-    </Row>
-    <Row>
-      {Platform.OS === "ios" && (
-        <Paragraph
-          style={{
-            marginBottom: 9,
-          }}
-        >
-          Payment will be charged to your Apple ID account at the confirmation
-          of purchase. The subscription automatically renews unless it is
-          canceled at least 24 hours before the end of the current period. Your
-          account will be charged for renewal within 24 hours prior to the end
-          of the current period. You can manage and cancel your subscriptions by
-          going to your App Store account settings after purchase.
-        </Paragraph>
-      )}
-    </Row>
-    <Row
-      style={{
-        marginBottom: 9,
-      }}
-    >
-      <ActionButton
-        flex={1}
-        title={"Privacy Policy"}
-        fillColor="#EDF0FC"
-        textColor={theme.darkBlue}
-        onPress={() => {
-          Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
-            Linking.openURL("https://quirk.fyi/privacy")
-          );
-        }}
-      />
-    </Row>
-    <Row>
-      <ActionButton
-        flex={1}
-        title={"Terms of Service"}
-        fillColor="#EDF0FC"
-        textColor={theme.darkBlue}
-        onPress={() => {
-          Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
-            Linking.openURL("https://quirk.fyi/tos")
-          );
-        }}
-      />
-    </Row>
-  </>
-);
-
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
@@ -152,7 +80,6 @@ interface State {
   ready: boolean;
   historyButtonLabel?: HistoryButtonLabelSetting;
   isGrandfatheredIntoSubscription?: boolean;
-  subscriptionExpirationDate?: string;
 }
 
 class SettingScreen extends React.Component<Props, State> {
@@ -164,7 +91,7 @@ class SettingScreen extends React.Component<Props, State> {
     super(props);
     this.state = {
       ready: false,
-      isGrandfatheredIntoSubscription: false,
+      isGrandfatheredIntoSubscription: true,
     };
     recordScreenCallOnFocus(this.props.navigation, "settings");
   }
@@ -178,18 +105,6 @@ class SettingScreen extends React.Component<Props, State> {
     this.setState({
       historyButtonLabel,
     });
-
-    // Check subscription status
-    if (await isGrandfatheredIntoFreeSubscription()) {
-      this.setState({
-        isGrandfatheredIntoSubscription: true,
-      });
-    } else {
-      const subscriptionExpirationDate = await getSubscriptionExpirationDate();
-      this.setState({
-        subscriptionExpirationDate,
-      });
-    }
 
     this.setState({
       ready: true,
@@ -249,7 +164,7 @@ class SettingScreen extends React.Component<Props, State> {
           >
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
-              <Header allowFontScaling={true}>Réglages</Header>
+              <Header allowFontScaling={true} style={{fontSize: 28}}>Réglages</Header>
               <IconButton
                 featherIconName={"list"}
                 accessibilityLabel={i18n.t("accessibility.list_button")}
@@ -264,7 +179,7 @@ class SettingScreen extends React.Component<Props, State> {
                 flexDirection: "column",
               }}
             >
-              <SubHeader>*history button labels</SubHeader>
+              <SubHeader>History button labels</SubHeader>
               <Paragraph
                 style={{
                   marginBottom: 9,
@@ -284,23 +199,38 @@ class SettingScreen extends React.Component<Props, State> {
                 onPress={() => this.toggleHistoryButtonLabels()}
               />
             </Row>
-
-            <Row
+            <View
               style={{
-                marginBottom: 18,
-                display: "flex",
-                flexDirection: "column",
+                marginTop: 18,
+                borderRadius: 12,
+                paddingBottom: 96,
               }}
             >
-              <SubHeader>*subscription</SubHeader>
-              {this.state.isGrandfatheredIntoSubscription ? (
-                <GrandfatheredInFreeQuirk />
-              ) : (
-                <SubscriptionExpirationDate
-                  expirationDate={this.state.subscriptionExpirationDate}
+              <SubHeader
+                style={{
+                  alignSelf: "flex-start",
+                  justifyContent: "center",
+                }}
+              >
+                {i18n.t("got_feedback")}
+              </SubHeader>
+              <Row
+                style={{
+                  alignSelf: "flex-start",
+                  justifyContent: "center",
+                }}
+              >
+                <ActionButton
+                  fillColor={theme.lightGray}
+                  textColor={theme.pink}
+                  title={i18n.t('email_us')}
+                  width={"100%"}
+                  onPress={() => {
+                    Linking.openURL("mailto:support@dreem.com");
+                  }}
                 />
-              )}
-            </Row>
+              </Row>
+            </View>
           </Container>
         </ScrollView>
       </View>

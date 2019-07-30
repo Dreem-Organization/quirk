@@ -45,7 +45,7 @@ export default class extends React.Component<
               marginBottom: 12,
             }}
           >
-            Is it as serious as you think? Are you sure it's true?
+            {i18n.t("main_screen.is_it_serious")}
           </Paragraph>
           <TextInput
             style={{

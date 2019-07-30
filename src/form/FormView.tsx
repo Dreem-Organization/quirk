@@ -1,8 +1,10 @@
-import { ActionButton } from "../ui";
+import { Header, Container, Row, ActionButton } from "../ui";
 import React from "react";
-import Carousel from "react-native-snap-carousel";
+import theme from "../theme";
+import Carousel, { Pagination }  from "react-native-snap-carousel";
 import { View, Keyboard } from "react-native";
 import { Haptic } from "expo";
+import haptic from "../haptic";
 import { sliderWidth, itemWidth } from "./sizes";
 import { Thought } from "../thoughts";
 import universalHaptic from "../haptic";
@@ -10,6 +12,7 @@ import AutomaticThought from "./AutomaticThought";
 import AlternativeThought from "./AlternativeThought";
 import Challenge from "./Challenge";
 import Distortions from "./Distortions";
+import i18n from "../i18n";
 import { saveExercise } from "../thoughtstore";
 import * as stats from "../stats";
 
@@ -37,6 +40,7 @@ interface FormViewProps {
   onChangeChallenge: (val: string) => void;
   onChangeAlternativeThought: (val: string) => void;
   onChangeDistortion: (selected: string) => void;
+  navigation:any;
 }
 
 interface FormViewState {
@@ -80,6 +84,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Distortions
           distortions={thought.cognitiveDistortions}
           onChange={this.props.onChangeDistortion}
+          navigation={this.props.navigation}
         />
       );
     }
@@ -100,18 +105,6 @@ export default class extends React.Component<FormViewProps, FormViewState> {
             value={thought.alternativeThought}
             onChange={this.props.onChangeAlternativeThought}
           />
-
-          <View
-            style={{
-              marginTop: 12,
-            }}
-          >
-            <ActionButton
-              title="Save & Finish"
-              width="100%"
-              onPress={this.onSave}
-            />
-          </View>
         </>
       );
     }
@@ -120,26 +113,61 @@ export default class extends React.Component<FormViewProps, FormViewState> {
   };
 
   render() {
+    let button;
+    if (this.state.activeSlide < 3) {
+      button = (
+        <ActionButton
+          title="Suivant"
+          width="100%"
+          fillColor={theme.lightGray}
+          textColor={theme.darkText}
+          onPress={() => {
+            haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+            this._carousel.snapToNext();
+          }}
+        />
+      )
+    } else {
+      button = (
+        <ActionButton
+          title={i18n.t("save_finish")}
+          width="100%"
+          onPress={this.onSave}
+        />
+      )
+    }
+
     return (
-      <Carousel
-        ref={c => {
-          this._carousel = c;
-        }}
-        data={[
-          { slug: "automatic-thought" },
-          { slug: "distortions" },
-          { slug: "challenge" },
-          { slug: "alternative-thought" },
-        ]}
-        renderItem={this._renderItem}
-        sliderWidth={sliderWidth}
-        itemWidth={itemWidth}
-        onSnapToItem={index => {
-          this.setState({ activeSlide: index });
-          Keyboard.dismiss();
-        }}
-        firstItem={slideToIndex(this.props.slideToShow)}
-      />
+      <>
+        <Carousel
+          ref={c => {
+            this._carousel = c;
+          }}
+          data={[
+            { slug: "automatic-thought" },
+            { slug: "distortions" },
+            { slug: "challenge" },
+            { slug: "alternative-thought" },
+          ]}
+          renderItem={this._renderItem}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+          onSnapToItem={index => {
+            this.setState({ activeSlide: index });
+            Keyboard.dismiss();
+          }}
+          firstItem={this.props.slideToIndex(this.props.slideToShow)}
+        />
+        <Row
+          style={{
+            paddingLeft: 24,
+            paddingRight: 24,
+            paddingBottom: 50,
+          }}
+        >
+          {button}
+        </Row>
+      < />
     );
   }
 }
