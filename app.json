@@ -4,9 +4,9 @@
     "name": "quirk",
     "slug": "quirk",
     "privacy": "unlisted",
-    "sdkVersion": "33.0.0",
+    "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "2.3.0",
+    "version": "2.0.6",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
@@ -15,7 +15,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#F8A5C2"
     },
-    "assetBundlePatterns": ["assets/**"],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "tech.econn.quirk",
@@ -31,9 +31,6 @@
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
-    "androidStatusBar": {
-      "backgroundColor": "#fbfcfe"
-    },
     "hooks": {
       "postPublish": [
         {
@@ -44,11 +41,6 @@
           }
         }
       ]
-    },
-    "isDetached": true,
-    "detach": {
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.9.0-sdk31.0.0-250a3991-b623-4f9c-b07f-0b9ed7e8c4c9.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.9.2-sdk31.0.0-f0c63b44-0556-45f2-b4b9-ff5082f9ef72.tar.gz"
     },
     "scheme": "exp4d07d66c4b23470393769aad813cee0c"
   }

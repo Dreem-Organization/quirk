@@ -4,7 +4,7 @@
  */
 
 import { Platform } from "react-native";
-import * as Haptic from "expo-haptics";
+import { Haptic } from "expo";
 
 export default {
   notification: type => {
@@ -12,19 +12,19 @@ export default {
       return;
     }
 
-    Haptic.notificationAsync(type);
+    Haptic.notification(type);
   },
   selection: () => {
     if (Platform.OS !== "ios") {
       return;
     }
-    Haptic.selectionAsync();
+    Haptic.selection();
   },
   impact: type => {
     if (Platform.OS !== "ios") {
       return;
     }
 
-    Haptic.impactAsync(type);
+    Haptic.impact(type);
   },
 };

@@ -6,8 +6,7 @@ import {
 } from "react-navigation";
 import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
 import { ScrollView, View } from "react-native";
-import * as Haptic from 'expo-haptics';
-import Constants from 'expo-constants';
+import { Constants, Haptic } from "expo";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
@@ -235,7 +234,7 @@ class ExplanationScreen extends React.Component<Props> {
               justifyContent: "space-between",
             }}
           >
-            <Header allowFontScaling={false}>quirk.</Header>
+            <Header allowFontScaling={true}>Les distortions Cognitives</Header>
             <View
               style={{
                 display: "flex",

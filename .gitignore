@@ -310,4 +310,3 @@ prodMinSdkProdKernel/
 Pods/
 Podfile.lock
 *.ipa
-*.bak

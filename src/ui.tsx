@@ -103,7 +103,7 @@ export const SelectorTextItem = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: selected ? theme.blue : "white",
+      backgroundColor: selected ? theme.pink : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
@@ -232,7 +232,7 @@ export const RoundedSelectorButton = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: selected ? theme.blue : "white",
+      backgroundColor: selected ? theme.pink : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
@@ -274,7 +274,7 @@ export const FloatingCard = ({
     style={{
       backgroundColor: "white",
       borderWidth: 2,
-      borderColor: theme.blue,
+      borderColor: theme.pink,
       borderRadius: 8,
       padding: 24,
       elevation: 1,
@@ -331,8 +331,6 @@ export const GhostButton = ({
   height,
   disabled,
   flex,
-  fontSize,
-  style,
 }: {
   title: string;
   onPress: () => void;
@@ -342,8 +340,6 @@ export const GhostButton = ({
   height?: number;
   disabled?: boolean;
   flex?: number;
-  fontSize?: number;
-  style?: any;
 }) => (
   <TouchableOpacity
     style={{
@@ -358,7 +354,6 @@ export const GhostButton = ({
       width,
       height,
       flex,
-      ...style,
     }}
     disabled={disabled}
     onPress={onPress}
@@ -368,7 +363,7 @@ export const GhostButton = ({
         textAlign: "center",
         color: textColor,
         fontWeight: "700",
-        fontSize: fontSize || 16,
+        fontSize: 16,
       }}
     >
       {title}
@@ -399,7 +394,7 @@ export const ActionButton = ({
     style={{
       backgroundColor: fillColor,
       padding: 12,
-      borderRadius: 10,
+      borderRadius: 40,
       textAlign: "center",
       justifyContent: "center",
       alignItems: "center",
@@ -425,7 +420,7 @@ export const ActionButton = ({
 );
 
 ActionButton.defaultProps = {
-  fillColor: theme.blue,
+  fillColor: theme.pink,
   textColor: "white",
   width: 120,
 };

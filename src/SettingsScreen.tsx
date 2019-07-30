@@ -1,8 +1,7 @@
 import React from "react";
-import { ScrollView, StatusBar, Platform } from "react-native";
+import { ScrollView, View, StatusBar, Platform } from "react-native";
 import theme from "./theme";
-import { Linking } from "expo";
-import Constants from "expo-constants";
+import { Constants, Linking } from "expo";
 import {
   Header,
   Row,
@@ -19,7 +18,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_ON_BOARDING_SCREEN, LOCK_SCREEN } from "./screens";
+import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import { setSetting, getSettingOrSetDefault } from "./setting/settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -29,13 +28,8 @@ import {
 } from "./setting";
 import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
+import { getSubscriptionExpirationDate } from "./subscriptions/subscriptionstore";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
-import OneSignal from "react-native-onesignal";
-import { ONESIGNAL_SECRET } from "react-native-dotenv";
-import * as stats from "./stats";
-import { FadesIn } from "./animations";
-import { latestExpirationDate } from "./payments";
-import dayjs from "dayjs";
 
 export { HistoryButtonLabelSetting };
 
@@ -57,52 +51,6 @@ export async function getHistoryButtonLabel(): Promise<
 
   return value;
 }
-
-const Feedback = () => (
-  <>
-    <SubHeader>*feedback</SubHeader>
-    <Paragraph
-      style={{
-        marginBottom: 16,
-      }}
-    >
-      We take your feedback extremely seriously. The email below goes directly
-      to the creators of Quirk.
-    </Paragraph>
-    <ActionButton
-      flex={1}
-      title={"Email Feedback"}
-      fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
-      width={"100%"}
-      onPress={() => {
-        Linking.openURL(
-          "mailto:humans@quirk.fyi?subject=" + encodeURI("Quirk Feedback")
-        );
-      }}
-    />
-  </>
-);
-
-const CancelationInstructions = () => {
-  return (
-    <ActionButton
-      flex={1}
-      title={"Cancelation Instructions"}
-      fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
-      onPress={() => {
-        if (Platform.OS === "android") {
-          Linking.openURL(
-            "https://support.google.com/googleplay/answer/7018481"
-          );
-        } else {
-          Linking.openURL("https://support.apple.com/en-us/HT202039");
-        }
-      }}
-    />
-  );
-};
 
 const GrandfatheredInFreeQuirk = () => (
   <>
@@ -130,30 +78,68 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
     <Row>
       <Paragraph
         style={{
-          marginBottom: 16,
+          marginBottom: 9,
         }}
       >
         Thanks for supporting the development of Quirk!
       </Paragraph>
     </Row>
-    <Row
-      style={{
-        marginBottom: 16,
-      }}
-    >
-      <Paragraph>
-        You're currently subscribed. On{" "}
-        <B>{dayjs(expirationDate).format("YYYY-MM-DD")}</B> your subscription
-        will renew.
+    <Row>
+      <Paragraph
+        style={{
+          marginBottom: 9,
+        }}
+      >
+        You're currently subscribed to the <B>Quirk Monthly Subscription.</B> On{" "}
+        <B>{expirationDate}</B> your subscription will renew and your account
+        will be charged <B>$3.99.</B>
       </Paragraph>
     </Row>
-
+    <Row>
+      {Platform.OS === "ios" && (
+        <Paragraph
+          style={{
+            marginBottom: 9,
+          }}
+        >
+          Payment will be charged to your Apple ID account at the confirmation
+          of purchase. The subscription automatically renews unless it is
+          canceled at least 24 hours before the end of the current period. Your
+          account will be charged for renewal within 24 hours prior to the end
+          of the current period. You can manage and cancel your subscriptions by
+          going to your App Store account settings after purchase.
+        </Paragraph>
+      )}
+    </Row>
     <Row
       style={{
-        marginBottom: 16,
+        marginBottom: 9,
       }}
     >
-      <CancelationInstructions />
+      <ActionButton
+        flex={1}
+        title={"Privacy Policy"}
+        fillColor="#EDF0FC"
+        textColor={theme.darkBlue}
+        onPress={() => {
+          Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
+            Linking.openURL("https://quirk.fyi/privacy")
+          );
+        }}
+      />
+    </Row>
+    <Row>
+      <ActionButton
+        flex={1}
+        title={"Terms of Service"}
+        fillColor="#EDF0FC"
+        textColor={theme.darkBlue}
+        onPress={() => {
+          Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
+            Linking.openURL("https://quirk.fyi/tos")
+          );
+        }}
+      />
     </Row>
   </>
 );
@@ -163,11 +149,10 @@ interface Props {
 }
 
 interface State {
-  isReady: boolean;
+  ready: boolean;
   historyButtonLabel?: HistoryButtonLabelSetting;
   isGrandfatheredIntoSubscription?: boolean;
   subscriptionExpirationDate?: string;
-  areNotificationsOn?: boolean;
 }
 
 class SettingScreen extends React.Component<Props, State> {
@@ -178,18 +163,13 @@ class SettingScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      isReady: false,
+      ready: false,
       isGrandfatheredIntoSubscription: false,
-      areNotificationsOn: false,
     };
     recordScreenCallOnFocus(this.props.navigation, "settings");
   }
 
   async componentDidMount() {
-    OneSignal.init(ONESIGNAL_SECRET, {
-      kOSSettingsKeyAutoPrompt: false,
-      kOSSettingsKeyInFocusDisplayOption: 0,
-    });
     await this.refresh();
   }
 
@@ -205,18 +185,14 @@ class SettingScreen extends React.Component<Props, State> {
         isGrandfatheredIntoSubscription: true,
       });
     } else {
-      const expDate = await latestExpirationDate();
+      const subscriptionExpirationDate = await getSubscriptionExpirationDate();
       this.setState({
-        subscriptionExpirationDate: expDate,
+        subscriptionExpirationDate,
       });
     }
 
-    // Check notification status
-    OneSignal.getPermissionSubscriptionState(status => {
-      this.setState({
-        areNotificationsOn: !!status.subscriptionEnabled,
-        isReady: true,
-      });
+    this.setState({
+      ready: true,
     });
   };
 
@@ -229,7 +205,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   toggleHistoryButtonLabels = () => {
-    if (!this.state.isReady) {
+    if (!this.state.ready) {
       this.refresh();
       return;
     }
@@ -250,13 +226,14 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { historyButtonLabel, isReady } = this.state;
+    const { historyButtonLabel, ready } = this.state;
+
+    if (!ready) {
+      return <View style={{ backgroundColor: theme.lightOffwhite }} />;
+    }
 
     return (
-      <FadesIn
-        style={{ backgroundColor: theme.lightOffwhite }}
-        pose={isReady ? "visible" : "hidden"}
-      >
+      <View style={{ backgroundColor: theme.lightOffwhite }}>
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
@@ -271,93 +248,18 @@ class SettingScreen extends React.Component<Props, State> {
             }}
           >
             <StatusBar barStyle="dark-content" />
-            <Row style={{ marginBottom: 22 }}>
-              <Header>quirk*</Header>
+            <Row style={{ marginBottom: 18 }}>
+              <Header allowFontScaling={true}>Réglages</Header>
               <IconButton
-                featherIconName={"x"}
-                accessibilityLabel={i18n.t("accessibility.close_button")}
+                featherIconName={"list"}
+                accessibilityLabel={i18n.t("accessibility.list_button")}
                 onPress={() => this.navigateToList()}
               />
             </Row>
 
             <Row
               style={{
-                marginBottom: 22,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>*reminders</SubHeader>
-              <Paragraph
-                style={{
-                  marginBottom: 16,
-                }}
-              >
-                If you'd like, you can turn on notification reminders that help
-                you build up the habit of challenging thoughts.
-              </Paragraph>
-              <RoundedSelectorButton
-                title={"Please remind me"}
-                selected={this.state.areNotificationsOn}
-                onPress={() => {
-                  if (Platform.OS === "ios") {
-                    OneSignal.registerForPushNotifications();
-                  }
-                  OneSignal.setSubscription(true);
-                  this.setState({
-                    areNotificationsOn: true,
-                  });
-                  stats.userTurnedOnNotifications();
-                }}
-              />
-
-              <RoundedSelectorButton
-                title={"No reminders, thanks"}
-                selected={!this.state.areNotificationsOn}
-                onPress={() => {
-                  OneSignal.setSubscription(false);
-                  this.setState({
-                    areNotificationsOn: false,
-                  });
-                  stats.userTurnedOffNotifications();
-                }}
-              />
-            </Row>
-
-            <Row
-              style={{
-                marginBottom: 22,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>*pincode lock 🔒</SubHeader>
-              <Paragraph
-                style={{
-                  marginBottom: 16,
-                }}
-              >
-                You can lock the app with a pincode if you'd like. Be warned
-                that the only way to reset the code is to contact support (which
-                can take awhile), so be careful not to forget.
-              </Paragraph>
-              <ActionButton
-                flex={1}
-                title={"Set Pincode"}
-                width={"100%"}
-                fillColor="#EDF0FC"
-                textColor={theme.darkBlue}
-                onPress={() => {
-                  this.props.navigation.push(LOCK_SCREEN, {
-                    isSettingCode: true,
-                  });
-                }}
-              />
-            </Row>
-
-            <Row
-              style={{
-                marginBottom: 22,
+                marginBottom: 18,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -365,7 +267,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*history button labels</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 16,
+                  marginBottom: 9,
                 }}
               >
                 By default, we set the buttons in the history screen to use the
@@ -385,17 +287,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Feedback />
-            </Row>
-
-            <Row
-              style={{
-                marginBottom: 22,
+                marginBottom: 18,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -411,7 +303,7 @@ class SettingScreen extends React.Component<Props, State> {
             </Row>
           </Container>
         </ScrollView>
-      </FadesIn>
+      </View>
     );
   }
 }

@@ -10,6 +10,5 @@ export const textInputStyle = {
   borderColor: theme.lightGray,
   borderWidth: 1,
   color: theme.darkText,
-  textAlignVertical: "top",
 };
 export const textInputPlaceholderColor = theme.veryLightText;

@@ -1,10 +1,9 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import { StatusBar } from "react-native";
+import { View, StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
-import * as Haptic from "expo-haptics";
-import Constants from "expo-constants";
+import { Constants, Haptic } from "expo";
 import i18n from "../i18n";
 import {
   CBT_LIST_SCREEN,
@@ -16,11 +15,10 @@ import * as flagstore from "../flagstore";
 import FormView, { Slides } from "./FormView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
-import { getIsExistingUser, setIsExistingUser } from "../thoughtstore";
+import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
-import { FadesIn } from "../animations";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<any, NavigationAction>;
@@ -45,7 +43,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
 
     this.props.navigation.addListener("willFocus", async payload => {
       // We've come from a list item or the viewer
-      const thought = get(payload, "action.params.thought", false);
+      const thought = get(payload, "state.params.thought", false);
       if (thought && thought.uuid) {
         // Check if we're editing a particular slide
         const slide = get(payload, "action.params.slide", undefined);
@@ -69,10 +67,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
         });
         return;
       }
-
-      this.setState({
-        isReady: true,
-      });
     });
 
     recordScreenCallOnFocus(this.props.navigation, "form");
@@ -143,7 +137,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   onChangeDistortion = (selected: string) => {
-    haptic.selection();
+    haptic.selection(); // iOS users get a selected buzz
 
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
@@ -191,17 +185,20 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
       isReady,
     } = this.state;
 
+    if (!isReady) {
+      return null;
+    }
+
     if (shouldShowOnboarding) {
       this.props.navigation.replace(CBT_ON_BOARDING_SCREEN);
     }
 
     return (
-      <FadesIn
+      <View
         style={{
           backgroundColor: theme.lightOffwhite,
           height: "100%",
         }}
-        pose={isReady ? "visible" : "hidden"}
       >
         <StatusBar barStyle="dark-content" />
         <Container
@@ -211,7 +208,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             paddingRight: 0,
             marginTop: Constants.statusBarHeight,
             paddingTop: 12,
-            paddingBottom: 0,
           }}
         >
           <Row
@@ -232,15 +228,14 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               }}
               hasBadge={shouldShowHelpBadge}
             />
-            <Header allowFontScaling={false}>quirk</Header>
+            <Header allowFontScaling={false} style={{fontSize: 25}}>dreem</Header>
             <IconButton
               accessibilityLabel={i18n.t("accessibility.list_button")}
               featherIconName={"list"}
-              onPress={() => {
-                this.props.navigation.push(CBT_LIST_SCREEN);
-              }}
+              onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
             />
           </Row>
+          <Header allowFontScaling={true} style={{fontSize: 22}}>À quoi pensez  vous ? </Header>
           <FormView
             onSave={this.onSave}
             thought={this.state.thought}
@@ -252,7 +247,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             onChangeDistortion={this.onChangeDistortion}
           />
         </Container>
-      </FadesIn>
+      </View>
     );
   }
 }

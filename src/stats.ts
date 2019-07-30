@@ -1,15 +1,15 @@
 /**
- * This is Quirk's public stats file and is part of
- * how we do things.
+ * This is Quirk's public stats file and is part of the
+ * Open-Quirk project.
  *
+ * **What's the Open Quirk Project?**
  * Quirk should be open; code _and_ stats. Typically,
  * a developer gets stats through the app stores, and even
  * if the app is open source, those stats tend to be kept
  * private.
  *
- * Quirk's not gonna be like that. Instead, aggregate stats
- * will be shared publicly, as long as it protects the privacy
- * of the user.
+ * Quirk's not gonna be like that. Instead, stats will
+ * be shared openly.
  *
  * That let's community members:
  * - understand the status of the project
@@ -18,14 +18,11 @@
  * Plus, it allows researchers and mental health professionals
  * access the info in order to develop better treatments.
  *
- * These stats were created by you, the user.
- * **So you, the user, should have access to it.**
- *
- * (Note: we don't necessarily share all financial info
- * publicly due to legal + company risk)
+ * These stats are valuable data that's created by
+ * you, the user. **So you, the user, should have access to it.**
  */
 
-import * as Segment from "expo-analytics-segment";
+import { Segment } from "expo";
 import isInDev from "./isInDev";
 import dayjs from "dayjs";
 
@@ -91,8 +88,7 @@ export function endedOnboarding() {
 }
 
 /**
- * Thoughts recorded counter. If this drops, we have a huge
- * bug.
+ * Thought Recorded
  */
 export function thoughtRecorded() {
   if (isInDev()) {
@@ -122,22 +118,6 @@ export function userEncounteredPaymentError(err: string) {
   });
 }
 
-export function userCanceledPayment() {
-  Segment.track("user_canceled_payment");
-}
-
-export function userSawApologyNotice() {
-  Segment.track("user_saw_apology_notice");
-}
-
-export function userRestoredPurchase() {
-  Segment.track("user_restored_purchase");
-}
-
-export function userSetPincode() {
-  Segment.track("user_set_pincode");
-}
-
 /**
  * User Subscribed
  */
@@ -164,73 +144,20 @@ export function subscriptionVerified(
   });
 }
 
-/**
- * If there's a spike in expired, there's probably a payment error.
- */
 export function subscriptionUnverified(reason: "expired" | "never-bought") {
   Segment.trackWithProperties("subscription_unverified", {
     reason,
   });
 }
 
-/**
- * If there's a spike these, there's probably a payment error.
- */
 export function subscriptionGivenForFreeDueToError() {
   Segment.track("subscription_given_for_free_due_to_error");
 }
 
-/**
- * If this drops dramatically, there's a cache bug
- */
 export function subscriptionFoundInCache(value: string) {
   Segment.trackWithProperties("subscription_found_in_cache", {
     value,
   });
-}
-
-/**
- * This lets us understand how people fill out the fields,
- * and if people actually understand how the app works.
- */
-export function userFilledOutFormField(
-  value: "automatic" | "distortions" | "challenge" | "alternative"
-) {
-  Segment.track("user_filled_out_" + value);
-}
-
-/**
- * This "roughly" let's us understand if our descriptions
- * make sense. If we change the descriptions, and people
- * start selecting a particular distortion less, then
- * it could mean the description is bad.
- */
-export function userCheckedDistortion(slug: string) {
-  Segment.track("user_checked_distortion_" + slug);
-}
-
-export function userClickedQuirkGuide() {
-  Segment.track("user_clicked_quirk_guide");
-}
-
-export function userCantOpenLink() {
-  Segment.track("user_cant_open_link");
-}
-
-export function userTurnedOnNotifications() {
-  Segment.track("user_turned_on_notifications");
-}
-
-export function userTurnedOffNotifications() {
-  Segment.track("user_turned_off_notifications");
-}
-
-export function userReviewed() {
-  Segment.track("user_reviewed");
-}
-
-export function userPromptedForReviewWhenSettingCode() {
-  Segment.track("user_prompted_for_review_when_setting_code");
 }
 
 /**

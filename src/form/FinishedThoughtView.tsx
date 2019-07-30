@@ -1,7 +1,9 @@
 import React from "react";
 import { SavedThought } from "../thoughts";
-import { ScrollView } from "react-native";
+import { View, Linking, ScrollView } from "react-native";
 import {
+  Row,
+  ActionButton,
   SubHeader,
   Paragraph,
   FormContainer,
@@ -12,7 +14,6 @@ import { BubbleThought } from "../imgs/Bubbles";
 import { emojiForSlug } from "../distortions";
 import theme from "../theme";
 import { Slides } from "./FormView";
-import Feedback from "../feedback";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const paragraphs = cognitiveDistortions
@@ -148,7 +149,39 @@ export default ({
       </Row> */}
 
       <CBTView thought={thought} onEdit={onEdit} />
-      <Feedback />
+
+      <View
+        style={{
+          marginTop: 18,
+          borderRadius: 8,
+          paddingBottom: 96,
+        }}
+      >
+        <SubHeader
+          style={{
+            alignSelf: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          Got Feedback?
+        </SubHeader>
+        <Row
+          style={{
+            alignSelf: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          <ActionButton
+            fillColor={theme.lightGray}
+            textColor={theme.pink}
+            title={"Email Us!"}
+            width={"100%"}
+            onPress={() => {
+              Linking.openURL("mailto:support@dreem.com");
+            }}
+          />
+        </Row>
+      </View>
     </ScrollView>
   );
 };

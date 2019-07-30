@@ -17,8 +17,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import universalHaptic from "./haptic";
-import Constants from "expo-constants";
-import * as Haptic from "expo-haptics";
+import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
@@ -30,7 +29,6 @@ import i18n from "./i18n";
 import { emojiForSlug } from "./distortions";
 import { take } from "lodash";
 import { recordScreenCallOnFocus } from "./navigation";
-import { FadesIn } from "./animations";
 
 const ThoughtItem = ({
   thought,
@@ -286,7 +284,7 @@ class CBTListScreen extends React.Component<Props, State> {
           }}
         >
           <Container>
-            <StatusBar barStyle="dark-content" translucent={true} />
+            <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
               <Header allowFontScaling={false}>.quirk</Header>
 
@@ -307,14 +305,14 @@ class CBTListScreen extends React.Component<Props, State> {
               </View>
             </Row>
 
-            <FadesIn pose={isReady ? "visible" : "hidden"}>
+            {isReady && (
               <ThoughtItemList
                 groups={groups}
                 navigateToViewer={this.navigateToViewerWithThought}
                 onItemDelete={this.onItemDelete}
                 historyButtonLabel={historyButtonLabel}
               />
-            </FadesIn>
+            )}
           </Container>
         </ScrollView>
         <Alerter alerts={alerts} />
