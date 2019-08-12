@@ -159,17 +159,7 @@ const DockStep = ({ onContinue }) => (
     >
       {i18n.t("onboarding_body_4")}
     </Paragraph>
-
-    <Paragraph
-      style={{
-        fontSize: 20,
-        marginBottom: 48,
-      }}
-    >
-      {i18n.t("onboarding_body_5")}
-    </Paragraph>
-
-    <ActionButton title="Continue" width="100%" onPress={onContinue} />
+    <ActionButton title={i18n.t("continue")} width="100%" onPress={onContinue} />
   </View>
 );
 
