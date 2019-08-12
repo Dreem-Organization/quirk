@@ -170,34 +170,6 @@ class SettingScreen extends React.Component<Props, State> {
                 onPress={() => this.navigateToList()}
               />
             </Row>
-
-            <Row
-              style={{
-                marginBottom: 18,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>History button labels</SubHeader>
-              <Paragraph
-                style={{
-                  marginBottom: 9,
-                }}
-              >
-                By default, we set the buttons in the history screen to use the
-                Alternative Thought. This helps cement the thought as "changed."
-              </Paragraph>
-              <RoundedSelectorButton
-                title={"Alternative Thought"}
-                selected={historyButtonLabel === "alternative-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
-              />
-              <RoundedSelectorButton
-                title={"Automatic Thought"}
-                selected={historyButtonLabel === "automatic-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
-              />
-            </Row>
             <View
               style={{
                 marginTop: 18,
