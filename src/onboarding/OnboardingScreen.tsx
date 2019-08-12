@@ -29,10 +29,10 @@ const RecordStep = () => (
     }}
   >
     <Image
-      source={require("../../assets/looker/Looker.png")}
+      source={require("../../assets/onboarding/1.png")}
       style={{
-        width: 300,
-        height: 300,
+        width: 250,
+        height: 250,
         resizeMode: "contain",
         alignSelf: "center",
         marginBottom: 20,
@@ -64,10 +64,10 @@ const ChallengeStep = () => (
     }}
   >
     <Image
-      source={require("../../assets/eater/eater.png")}
+      source={require("../../assets/onboarding/2.png")}
       style={{
-        width: 156,
-        height: 156,
+        width: 250,
+        height: 250,
         resizeMode: "contain",
         alignSelf: "center",
         marginBottom: 48,
@@ -99,10 +99,10 @@ const ChangeStep = () => (
     }}
   >
     <Image
-      source={require("../../assets/logo/logo.png")}
+      source={require("../../assets/onboarding/3.png")}
       style={{
-        width: 156,
-        height: 156,
+        width: 250,
+        height: 250,
         resizeMode: "contain",
         alignSelf: "center",
         marginBottom: 48,
@@ -134,10 +134,10 @@ const DockStep = ({ onContinue }) => (
     }}
   >
     <Image
-      source={require("../../assets/dock/dock.png")}
+      source={require("../../assets/onboarding/4.png")}
       style={{
-        width: 256,
-        height: 196,
+        width: 250,
+        height: 250,
         resizeMode: "contain",
         alignSelf: "center",
         marginBottom: 48,

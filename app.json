@@ -15,8 +15,8 @@
     "primaryColor": "#F8A5C2",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#F8A5C2"
+      "resizeMode": "cover",
+      "backgroundColor": "#ff276a"
     },
     "assetBundlePatterns": [
       "**/*"

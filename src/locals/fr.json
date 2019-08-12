@@ -168,4 +168,9 @@
   "labeling_one_liner": "\"J'ai raté un test, donc je suis un mauvais élève.\"",
   "self_blaming_one_liner": "\"Mon fils échoue à l'école, j'ai dû le laisser tomber.\"",
   "other_blaming_one_liner": "\"Ce crétin met trop de temps à faire la queue et je vais être en retard !\"",
+  "thoughts_screen": "Mes pensées",
+  "settings_screen": "Réglages",
+  "though_screen": "Pensée",
+  "next_button": "Suivant",
+  "button_learn_more": "En savoir plus",
 }

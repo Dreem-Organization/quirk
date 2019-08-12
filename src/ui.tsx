@@ -66,6 +66,8 @@ export const Header = ({
       color: theme.darkText,
       marginTop: 5,
       marginBottom: 12,
+      flex: 0,
+      flexWrap: "wrap",
       ...style,
     }}
     textBreakStrategy={"simple"}
@@ -130,6 +132,8 @@ export const SelectorTextItem = ({
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
+            flexGrow: 1,
+            flex: 1,
           }}
         >
           <Text
@@ -138,6 +142,8 @@ export const SelectorTextItem = ({
               fontSize: 16,
               color: selected ? "white" : theme.darkText,
               marginRight: 8,
+              flex: 1,
+              flexWrap: 'nowrap'
             }}
           >
             {text}
@@ -258,7 +264,6 @@ export const RoundedSelectorButton = ({
         {title}
       </Text>
     </View>
-
     {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
 );
@@ -400,6 +405,7 @@ export const ActionButton = ({
       justifyContent: "center",
       alignItems: "center",
       maxHeight: 48,
+      flexDirection:"row",
       width,
       height,
       flex,
@@ -413,6 +419,8 @@ export const ActionButton = ({
         color: textColor,
         fontWeight: "700",
         fontSize: 16,
+        flex: 1,
+        flexWrap: "nowrap"
       }}
     >
       {title}

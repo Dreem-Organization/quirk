@@ -56,7 +56,7 @@ export default ({
           >
             <ActionButton
               flex={1}
-              title={"En savoir plus"}
+              title={i18n.t("button_learn_more")}
               fillColor="#EDF0FC"
               textColor={theme.darkBlue}
               width={"100%"}

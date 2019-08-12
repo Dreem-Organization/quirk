@@ -151,8 +151,7 @@ class SettingScreen extends React.Component<Props, State> {
       <View style={{ backgroundColor: theme.lightOffwhite }}>
         <ScrollView
           style={{
-            backgroundColor: theme.lightOffwhite,
-            marginTop: Constants.statusBarHeight,
+            backgroundColor: theme.lightOffwhite, marginTop: Constants.statusBarHeight,
             paddingTop: 24,
             height: "100%",
           }}
@@ -164,7 +163,7 @@ class SettingScreen extends React.Component<Props, State> {
           >
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
-              <Header allowFontScaling={true} style={{fontSize: 28}}>Réglages</Header>
+              <Header allowFontScaling={false} style={{fontSize: 28, flex: 1}}>{i18n.t("settings_screen")}</Header>
               <IconButton
                 featherIconName={"list"}
                 accessibilityLabel={i18n.t("accessibility.list_button")}

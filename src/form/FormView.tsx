@@ -2,7 +2,7 @@ import { Header, Container, Row, ActionButton } from "../ui";
 import React from "react";
 import theme from "../theme";
 import Carousel, { Pagination }  from "react-native-snap-carousel";
-import { View, Keyboard } from "react-native";
+import { View, Keyboard, Platform } from "react-native";
 import { Haptic } from "expo";
 import haptic from "../haptic";
 import { sliderWidth, itemWidth } from "./sizes";
@@ -117,7 +117,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
     if (this.state.activeSlide < 3) {
       button = (
         <ActionButton
-          title="Suivant"
+          title={i18n.t("next_button")}
           width="100%"
           fillColor={theme.lightGray}
           textColor={theme.darkText}
@@ -162,7 +162,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
           style={{
             paddingLeft: 24,
             paddingRight: 24,
-            paddingBottom: 50,
+            paddingBottom: Platform.OS === 'ios' ? 30 : 0,
           }}
         >
           {button}

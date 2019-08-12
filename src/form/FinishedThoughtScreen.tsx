@@ -64,7 +64,7 @@ export default class extends React.Component<ScreenProps, ScreenState> {
               paddingRight: 24,
             }}
           >
-            <Header allowFontScaling={false} style={{fontSize: 28}}>Pensée</Header>
+            <Header allowFontScaling={false} style={{fontSize: 28, flex: 1}}>{i18n.t("though_screen")}</Header>
             <IconButton
               accessibilityLabel={i18n.t("accessibility.close_button")}
               featherIconName={"x"}

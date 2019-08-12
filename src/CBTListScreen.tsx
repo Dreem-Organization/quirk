@@ -286,7 +286,7 @@ class CBTListScreen extends React.Component<Props, State> {
           <Container>
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
-              <Header allowFontScaling={false} style={{fontSize: 30}}>Mes pensées</Header>
+              <Header allowFontScaling={false} style={{fontSize: 30, flex: 1}}>{i18n.t("thoughts_screen")}</Header>
 
               <View style={{ flexDirection: "row" }}>
                 <IconButton
