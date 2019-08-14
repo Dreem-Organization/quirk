@@ -1,7 +1,7 @@
 {
   "expo": {
     "icon": "./assets/ios.png",
-    "name": "DreemThoughts",
+    "name": "Journal",
     "slug": "dreemthoughts",
     "privacy": "unlisted",
     "sdkVersion": "31.0.0",
@@ -24,14 +24,14 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.dreem.dreemthoughts",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "icon": "./assets/ios.png"
     },
     "android": {
       "package": "com.dreem.dreemthoughts",
       "permissions": [],
       "icon": "./assets/android.png",
-      "versionCode": 19
+      "versionCode": 20
     },
     "scheme": "exp4d07d66c4b23470393769aad813cee0c",
     "description": ""
