@@ -234,7 +234,7 @@ class ExplanationScreen extends React.Component<Props> {
               justifyContent: "space-between",
             }}
           >
-            <Header allowFontScaling={true}>Aide</Header>
+            <Header allowFontScaling={false} style={{fontSize: 30, flex: 1}}>{i18n.t("help_screen")}</Header>
             <View
               style={{
                 display: "flex",

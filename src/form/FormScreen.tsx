@@ -19,6 +19,7 @@ import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
+import { AsyncStorage } from "react-native";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<any, NavigationAction>;
@@ -82,6 +83,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   }
 
   async componentDidMount() {
+    // AsyncStorage.clear();
     const isExisting = await getIsExistingUser();
     if (!isExisting) {
       setIsExistingUser();
