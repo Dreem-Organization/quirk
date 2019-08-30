@@ -281,7 +281,7 @@ export default class extends React.Component<ScreenProps> {
         />
 
         <Pagination
-          dotsLength={4}
+          dotsLength={5}
           activeDotIndex={this.state.activeSlide}
           containerStyle={{
             margin: 0,
