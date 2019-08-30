@@ -236,11 +236,19 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
           >
 
             <Header allowFontScaling={false} style={{fontSize: 30}}>Journal</Header>
-            <IconButton
-              accessibilityLabel={i18n.t("accessibility.list_button")}
-              featherIconName={"list"}
-              onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
-            />
+            <View style={{ flexDirection: "row" }}>
+              <IconButton
+                accessibilityLabel={i18n.t("accessibility.list_button")}
+                featherIconName={"list"}
+                onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
+                style={{ marginRight: 18 }}
+              />
+              <IconButton
+                accessibilityLabel={i18n.t("accessibility.list_button")}
+                featherIconName={"help-circle"}
+                onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
+              />
+            </View>
           </Row>
           <FormView
             onSave={this.onSave}

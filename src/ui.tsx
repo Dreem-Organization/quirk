@@ -148,7 +148,6 @@ export const SelectorTextItem = ({
           >
             {text}
           </Text>
-          {selected && <Feather name={"check"} size={16} color={"white"} />}
         </View>
       </View>
 

@@ -4,8 +4,8 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
-import { ScrollView, View } from "react-native";
+import { SubHeader, Paragraph, Header, IconButton, GhostButton, ActionButton } from "./ui";
+import { ScrollView, View, Row } from "react-native";
 import { Constants, Haptic } from "expo";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
@@ -266,7 +266,6 @@ class ExplanationScreen extends React.Component<Props> {
               />
             </View>
           </View>
-
           <AllOrNothingThinking />
           <Catastrophizing />
           <EmotionalReasoning />
@@ -279,6 +278,30 @@ class ExplanationScreen extends React.Component<Props> {
           <OverGeneralization />
           <SelfBlaming />
           <ShouldStatements />
+          <View
+            style={{
+              marginTop: 18,
+              paddingBottom: 36,
+            }}
+          >
+            <SubHeader
+              style={{
+                alignSelf: "flex-start",
+                justifyContent: "center",
+              }}
+            >
+              {i18n.t("got_feedback")}
+            </SubHeader>
+            <ActionButton
+              fillColor={theme.lightGray}
+              textColor={theme.pink}
+              title={i18n.t('email_us')}
+              width={"100%"}
+              onPress={() => {
+                Linking.openURL("mailto:support@dreem.com");
+              }}
+            />
+          </View>
         </View>
       </ScrollView>
     );

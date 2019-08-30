@@ -20,6 +20,42 @@ interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
+
+const DreemStep = () => (
+  <View
+    style={{
+      height: "100%",
+      justifyContent: "center",
+      flex: 1,
+    }}
+  >
+    <Image
+      source={require("../../assets/onboarding/0.png")}
+      style={{
+        width: 250,
+        height: 250,
+        resizeMode: "contain",
+        alignSelf: "center",
+        marginBottom: 20,
+      }}
+    />
+    <Header
+      style={{
+        fontSize: 28,
+      }}
+    >
+      {i18n.t("onboarding_title_0")}
+    </Header>
+    <Paragraph
+      style={{
+        fontSize: 20,
+      }}
+    >
+      {i18n.t("onboarding_body_0")}
+    </Paragraph>
+  </View>
+);
+
 const RecordStep = () => (
   <View
     style={{
@@ -190,6 +226,10 @@ export default class extends React.Component<ScreenProps> {
   _carousel = null;
 
   _renderItem = ({ item, index }) => {
+    if (item.slug === "dreem") {
+      return <DreemStep />;
+    }
+
     if (item.slug === "record") {
       return <RecordStep />;
     }
@@ -228,6 +268,7 @@ export default class extends React.Component<ScreenProps> {
             this._carousel = c;
           }}
           data={[
+            { slug: "dreem" },
             { slug: "record" },
             { slug: "challenge" },
             { slug: "change" },

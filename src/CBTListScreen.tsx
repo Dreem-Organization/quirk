@@ -290,12 +290,6 @@ class CBTListScreen extends React.Component<Props, State> {
 
               <View style={{ flexDirection: "row" }}>
                 <IconButton
-                  featherIconName={"settings"}
-                  onPress={() => this.navigateToSettings()}
-                  accessibilityLabel={i18n.t("accessibility.settings_button")}
-                  style={{ marginRight: 18 }}
-                />
-                <IconButton
                   featherIconName={"x"}
                   onPress={() => this.navigateToForm()}
                   accessibilityLabel={i18n.t(
