@@ -6,7 +6,7 @@ import {
   ActionButton,
   Row,
 } from "../ui";
-import { View, ScrollView, Linking } from "react-native";
+import { View, ScrollView } from "react-native";
 import i18n from "../i18n";
 import { CognitiveDistortion } from "../distortions";
 import theme from "../theme";

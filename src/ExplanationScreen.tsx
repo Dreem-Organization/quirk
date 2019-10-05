@@ -5,8 +5,9 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { SubHeader, Paragraph, Header, IconButton, GhostButton, ActionButton } from "./ui";
-import { ScrollView, View, Row } from "react-native";
-import { Constants, Haptic } from "expo";
+import { ScrollView, View, Row, Linking } from "react-native";
+import * as Haptic from 'expo-haptics';
+import Constants from 'expo-constants';
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
@@ -298,7 +299,7 @@ class ExplanationScreen extends React.Component<Props> {
               title={i18n.t('email_us')}
               width={"100%"}
               onPress={() => {
-                Linking.openURL("mailto:support@dreem.com");
+                Linking.mailto("support@dreem.com");
               }}
             />
           </View>

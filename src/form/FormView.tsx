@@ -3,7 +3,7 @@ import React from "react";
 import theme from "../theme";
 import Carousel, { Pagination }  from "react-native-snap-carousel";
 import { View, Keyboard, Platform } from "react-native";
-import { Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
 import haptic from "../haptic";
 import { sliderWidth, itemWidth } from "./sizes";
 import { Thought } from "../thoughts";

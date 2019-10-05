@@ -1,7 +1,7 @@
 import React from "react";
-import { ScrollView, View, StatusBar, Platform } from "react-native";
+import { ScrollView, View, StatusBar, Platform, Linking } from "react-native";
 import theme from "./theme";
-import { Constants, Linking } from "expo";
+import Constants from 'expo-constants';
 import {
   Header,
   Row,
@@ -197,7 +197,7 @@ class SettingScreen extends React.Component<Props, State> {
                   title={i18n.t('email_us')}
                   width={"100%"}
                   onPress={() => {
-                    Linking.openURL("mailto:support@dreem.com");
+                    Linking.mailto("support@dreem.com");
                   }}
                 />
               </Row>
