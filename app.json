@@ -4,7 +4,7 @@
     "name": "Journal",
     "slug": "dreemthoughts",
     "privacy": "unlisted",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android"
