@@ -39,6 +39,7 @@ export default ({
         multiline={true}
         numberOfLines={6}
         onChangeText={onChange}
+        textAlignVertical="top"
       />
     </View>
   </>

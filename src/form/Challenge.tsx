@@ -61,6 +61,7 @@ export default class extends React.Component<
             numberOfLines={6}
             onChangeText={onChange}
             editable={!this.state.showExample}
+            textAlignVertical="top"
           />
         </View>
       </>

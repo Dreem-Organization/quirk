@@ -158,7 +158,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
           }}
           firstItem={this.props.slideToIndex(this.props.slideToShow)}
         />
-        <KeyboardAvoidingView behavior="position" enabled keyboardVerticalOffset={30}>
+        <KeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={40}>
           <Row
             style={{
               paddingLeft: 24,

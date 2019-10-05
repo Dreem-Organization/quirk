@@ -197,7 +197,7 @@ class SettingScreen extends React.Component<Props, State> {
                   title={i18n.t('email_us')}
                   width={"100%"}
                   onPress={() => {
-                    Linking.mailto("support@dreem.com");
+                    Linking.openURL("mailto:support@dreem.com");
                   }}
                 />
               </Row>
