@@ -2,7 +2,7 @@ import { Header, Container, Row, ActionButton } from "../ui";
 import React from "react";
 import theme from "../theme";
 import Carousel, { Pagination }  from "react-native-snap-carousel";
-import { View, Keyboard, Platform } from "react-native";
+import { View, Keyboard, Platform, KeyboardAvoidingView } from "react-native";
 import * as Haptic from 'expo-haptics';
 import haptic from "../haptic";
 import { sliderWidth, itemWidth } from "./sizes";
@@ -158,15 +158,17 @@ export default class extends React.Component<FormViewProps, FormViewState> {
           }}
           firstItem={this.props.slideToIndex(this.props.slideToShow)}
         />
-        <Row
-          style={{
-            paddingLeft: 24,
-            paddingRight: 24,
-            paddingBottom: Platform.OS === 'ios' ? 30 : 0,
-          }}
-        >
-          {button}
-        </Row>
+        <KeyboardAvoidingView behavior="position" enabled keyboardVerticalOffset={30}>
+          <Row
+            style={{
+              paddingLeft: 24,
+              paddingRight: 24,
+              paddingBottom: Platform.OS === 'ios' ? 30 : 0,
+            }}
+          >
+            {button}
+          </Row>
+        </KeyboardAvoidingView>
       < />
     );
   }
