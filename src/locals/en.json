@@ -6,10 +6,10 @@
     "cog_distortion": { "label": "Mind Reading", "slug": "mind-reading" },
     "intro": {
       "line1": "Welcome to",
-      "emphasis1": "quirk",
-      "line2": ", the",
-      "emphasis2": "Cognitive Behavioral Therapy (CBT)",
-      "line3": "App."
+      "emphasis1": "Journal",
+      "line2": ", a",
+      "emphasis2": "an app inspired by cognitive and behavioral",
+      "line3": "therapy (CBT)."
     },
     "crash_course": {
       "line1": "This is a",
