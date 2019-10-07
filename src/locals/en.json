@@ -6,10 +6,10 @@
     "cog_distortion": { "label": "Mind Reading", "slug": "mind-reading" },
     "intro": {
       "line1": "Welcome to",
-      "emphasis1": "quirk",
-      "line2": ", the",
-      "emphasis2": "Cognitive Behavioral Therapy (CBT)",
-      "line3": "App."
+      "emphasis1": "Journal",
+      "line2": ", an",
+      "emphasis2": "app inspired by",
+      "line3": "Cognitive and Behavioral Therapy (CBT)."
     },
     "crash_course": {
       "line1": "This is a",
@@ -118,7 +118,7 @@
   "minimization_of_the_positive_explanation": "If we downplay the good things that are happening to us, we're minimizing the positive. Even if our day didn't go 100% as planned, it doesn't mean that the 60% that did go right should be ignored.",
   "minimization_of_the_positive_thought": "Many people liked my presentation, but I stumbled giving the intro, so it was bad.",
   "other_blaming": "Other Blaming",
-  "other_blaming_explanation_1": "If a bad situation must be the fault of someone, we're other-blaming. If you failed an exam and you're blaming the teacher, you're directing your energy to the wrong place. Someone cut you off on the highway? If you honk your horn, flip them off, and stew, how is that helping? Now you're cut off and mad!",
+  "other_blaming_explanation_1": "If a bad situation must be the fault of someone, we're other-blaming. If you failed an exam and you're blaming the teacher, you're directing your energy to the wrong place. Someone cut you off on the highway? If you honk your horn, curse and stew, how is that helping? Now you're cut off and mad!",
   "other_blaming_explanation_2": "This doesn't mean you have to blame yourself for every negative situation. You don't have to blame anyone. No one has to be at fault if you let the situation pass without attaching blame.",
   "other_blaming_thought": "That jerk is taking too long in line and I'm going to be late!",
   "over_generalization": "Over Generalization",
@@ -139,7 +139,6 @@
     "delete_thought_button": "delete thought",
     "close_button": "close"
   },
-  "save_finish": "Save & Finish",
   "payment": {
     "ios_explanation": "Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
   },
@@ -181,5 +180,5 @@
   "button_learn_more": "Learn more",
   "continue": "Continue",
   "help_screen": "Help",
-  "no_thoughts_yet":"No thoughts yet!",
+  "no_thoughts_yet":"No thoughts yet!"
 }
