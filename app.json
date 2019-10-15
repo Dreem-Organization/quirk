@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
@@ -24,14 +24,14 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.dreem.dreemthoughts",
-      "buildNumber": "6",
+      "buildNumber": "9",
       "icon": "./assets/ios.png"
     },
     "android": {
       "package": "com.dreem.dreemthoughts",
       "permissions": [],
       "icon": "./assets/android.png",
-      "versionCode": 23
+      "versionCode": 25
     },
     "scheme": "exp4d07d66c4b23470393769aad813cee0c",
     "description": ""
